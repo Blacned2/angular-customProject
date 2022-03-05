@@ -1,0 +1,33 @@
+<div class="bg-white mt-4" style="border-radius: 0.2em;">
+    <h1 class="text-center">User-List</h1>
+    <app-typehead-focus></app-typehead-focus>
+    <ngb-accordion [closeOthers]="true" *ngFor="let item of userItem | slice:(page-1) * pageSize:page * pageSize">
+        <ngb-panel title="{{item.name}}">
+            <ng-template ngbPanelContent>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>USERNAME</th>
+                            <th>EMAIL</th>
+                            <th>STREET</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{item.id}}</td>
+                            <td>{{item.username}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.address.street}}</td>    
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <ngb-pagination [collectionSize]="userItem.length / 2" [(page)]="page" [maxSize]="userItem.length / 50"
+        [rotate]="true" [boundaryLinks]="true" aria-label="Default pagination"></ngb-pagination>
+</div>
+
+
+

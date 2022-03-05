@@ -1,0 +1,36 @@
+<div class="bg-white mt-4" style="border-radius: 0.2em;">
+    <h1>Todo-List</h1>
+    <table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+                <th>
+                    User Id
+                </th>
+                <th>
+                    #
+                </th>
+                <th>
+                    Title
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let item of todoItem | slice:(page-1) * pageSize: page * pageSize">
+                <td>
+                    {{item.userId}}
+                </td>
+                <td>
+                    {{item.id}}
+                </td>
+                <td class="text-primary">
+                    {{item.title}}
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+    <ngb-pagination [collectionSize]="todoItem.length / 2" [(page)]="page" [maxSize]="todoItem.length / 50"
+        [rotate]="true" [boundaryLinks]="true" aria-label="Default pagination"></ngb-pagination>
+</div>

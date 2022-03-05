@@ -1,0 +1,95 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Alici Ekleme Ekrani</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <app-modal-options (newItemEvent)="getAlicilar()"></app-modal-options>
+</ng-template>
+<h1 class="bg-light"><a (click)="openXl(content)"
+        style="text-decoration: none;color: blue;cursor: pointer;padding: 0.5em;">Alici Ekle</a></h1>
+<div class="bg-white mt-4" style="border-radius: 0.2em;">
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr class="table-tr">
+                <th>
+                    Alici ID
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Alici Name
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Alici Phone Number
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of aliciItems['alicilar']">
+                <td>
+                    <app-loading style="position: absolute;"></app-loading>
+                    <span></span>{{data.aliciID}}
+                </td>
+                <td class="text-center">
+                    <button class="btn" (click)="openXl(content)">
+                        <img width="30px" src="../../../../../assets/Edit_icon_(the_Noun_Project_30184).svg.png" alt="">
+                    </button>
+
+                    <!-- Popup -->
+                    <ng-template #content let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Alici Guncelleme Ekrani</h4>
+                            <button type="button" class="btn-close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')"></button>
+                        </div>
+                        <app-modal-options [item]="data" (newItemEvent)="getAlicilar()"></app-modal-options>
+                    </ng-template>
+                </td>
+                <td>
+                    {{data.aliciName}}
+                </td>
+                <td>
+                    {{data.address}}
+                </td>
+                <td>
+                    {{data.aliciTelNo}}
+                </td>
+                <td>
+                    <button class="btn" (click)="aliciDelete(data.aliciID)">
+                        <img width="25px" src="../../../../../assets/delete.png" alt="">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4 bg-secondary g-0 p-0 m-0 mb-3">
+                <div class="row">
+                    <div class="col-md-5 g-0 m-0 p-0">
+                        <button (click)="prevPage()" class="btn btn-success pagingButtons">Prev</button>
+                    </div>
+                    <div class="col-md-2 g-0 m-0 p-0 text-white">
+                        <label class="text-center box-sm" disabled name="" id="">{{aliciPage}}</label>
+                    </div>
+                    <div class="col-md-5 g-0 m-0 p-0">
+                        <button (click)="nextPage()" id="done" class="btn btn-primary pagingButtons">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+
+        </div>
+
+    </div>
+</div>

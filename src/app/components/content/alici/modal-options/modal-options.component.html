@@ -1,0 +1,25 @@
+<form #aliciPost="ngForm" (ngSubmit)="onSubmit(aliciPost.value)">
+    <div class="modal-body bg-light">
+        <div class="col-md-12">
+            <div class="form-group mt-3">
+                <label for="aliciName" class="control-label">Alici Name</label>
+                <input [ngModel]="item.aliciName" maxlength="30" type="text" name="aliciName" class="form-control" required minlength="2" placeholder="..." ngModel>
+            </div>
+            <div class="form-group mt-3">
+                <label for="address" class="control-label">Address</label>
+                <input [ngModel]="item.address" maxlength="100" type="text" placeholder="..." ngModel class="form-control"
+                    name="address" ngModel>
+            </div>
+            <div class="form-group mt-3">
+                <label for="aliciTelNo" class="control-label">Alici Phone Number</label>
+                <input [ngModel]="item.aliciTelNo" maxlength="30" type="text" placeholder="..." ngModel class="form-control"
+                    name="aliciTelNo" ngModel>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <input type="submit" value="Ekle" class="btn btn-primary" />
+        </div>
+    </div>
+</form>

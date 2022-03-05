@@ -1,0 +1,9 @@
+.navbar-me{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    align-content:center;
+    margin: 0;
+    padding: 0.8em;
+}
