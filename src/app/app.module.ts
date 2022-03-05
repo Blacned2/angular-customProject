@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NaviComponent } from './components/navi/navi.component';
-import { CategoryComponent } from './components/category/category.component';
 import { ContentComponent } from './components/content/content.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoComponentComponent } from './components/content/todo-component/todo-component.component';
@@ -24,7 +23,6 @@ import { LoadingInterceptorService } from './services/loading-interceptor.servic
   declarations: [
     AppComponent,
     NaviComponent,
-    CategoryComponent,
     ContentComponent,
     TodoComponentComponent,
     UserComponent,
