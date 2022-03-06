@@ -1,25 +1,39 @@
 <form #aliciPost="ngForm" (ngSubmit)="onSubmit(aliciPost.value)">
     <div class="modal-body bg-light">
         <div class="col-md-12">
-            <div class="form-group mt-3">
+            <div class="form-group mt-3" *ngIf="!deleteProcess">
                 <label for="aliciName" class="control-label">Alici Name</label>
                 <input [ngModel]="item.aliciName" maxlength="30" type="text" name="aliciName" class="form-control" required minlength="2" placeholder="..." ngModel>
             </div>
-            <div class="form-group mt-3">
+            <div class="form-group mt-3" *ngIf="!deleteProcess">
                 <label for="address" class="control-label">Address</label>
                 <input [ngModel]="item.address" maxlength="100" type="text" placeholder="..." ngModel class="form-control"
                     name="address" ngModel>
             </div>
-            <div class="form-group mt-3">
+            <div class="form-group mt-3" *ngIf="!deleteProcess" >
                 <label for="aliciTelNo" class="control-label">Alici Phone Number</label>
                 <input [ngModel]="item.aliciTelNo" maxlength="30" type="text" placeholder="..." ngModel class="form-control"
                     name="aliciTelNo" ngModel>
             </div>
+
+            <!-- Delete Process -->
+            <div class="form-group mt-3" *ngIf="deleteProcess">
+                <label class="form-control">{{item.aliciName}}</label>
+            </div>
+            <div class="form-group mt-3" *ngIf="deleteProcess">
+                <label class="form-control">{{item.address}}</label>
+            </div>
+            <div class="form-group mt-3" *ngIf="deleteProcess">
+                <label class="form-control">{{item.aliciTelNo}}</label>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
-        <div class="form-group">
+        <div class="form-group" *ngIf="!deleteProcess">
             <input type="submit" value="Ekle" class="btn btn-primary" />
+        </div>
+        <div class="form-group" *ngIf="deleteProcess">
+            <input type="submit" value="Sil" class="btn btn-danger" />
         </div>
     </div>
 </form>

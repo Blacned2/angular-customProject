@@ -36,7 +36,6 @@ export class AliciGetComponent implements OnInit {
     });
   }
 
-  
 
   aliciDelete(id: number) {
     if (id !== null) {
@@ -64,4 +63,5 @@ export class AliciGetComponent implements OnInit {
   openXl(content) {
     this.modalService.open(content, { size: 'xl' });
   }
+  
 }

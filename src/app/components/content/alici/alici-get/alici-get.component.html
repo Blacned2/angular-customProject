@@ -5,9 +5,9 @@
     </div>
     <app-modal-options (newItemEvent)="getAlicilar()"></app-modal-options>
 </ng-template>
-<h1 class="bg-light"><a (click)="openXl(content)"
-        style="text-decoration: none;color: blue;cursor: pointer;padding: 0.5em;">Alici Ekle</a></h1>
+
 <div class="bg-white mt-4" style="border-radius: 0.2em;">
+    <h1><a (click)="openXl(content)" style="text-decoration: none;color: blue;cursor: pointer;padding: 0.5em;">Alici Ekle</a></h1>
     <table class="table table-bordered table-striped text-center">
         <thead>
             <tr class="table-tr">
@@ -62,9 +62,17 @@
                     {{data.aliciTelNo}}
                 </td>
                 <td>
-                    <button class="btn" (click)="aliciDelete(data.aliciID)">
+                    <button class="btn" (click)="openXl(deleteContent)">
                         <img width="25px" src="../../../../../assets/delete.png" alt="">
                     </button>
+                    <ng-template #deleteContent let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Alici Silme Ekrani</h4>
+                            <button type="button" class="btn-close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')"></button>
+                        </div>
+                        <app-modal-options [deleteProcess]="true" [item]="data" (newItemEvent)="getAlicilar()"></app-modal-options>
+                    </ng-template>
                 </td>
             </tr>
         </tbody>

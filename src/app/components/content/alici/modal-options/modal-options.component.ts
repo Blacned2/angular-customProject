@@ -11,45 +11,55 @@ import { aliciModel } from 'src/app/models/aliciModel';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./modal-options.component.css']
 })
-export class ModalOptionsComponent implements OnInit{
+export class ModalOptionsComponent implements OnInit {
 
- 
+
   @Output() newItemEvent = new EventEmitter<string>();
-  @Input() item:aliciModel['alicilar'] = {aliciID:null,address:null,aliciName:null,aliciTelNo:null};
-
-  aliciObj:aliciModel['alicilar'] = {aliciID:0,address:'',aliciName:'',aliciTelNo:''}; //Instance
-  aliciPostUrl='https://localhost:44350/api/Alicilar/AliciEkleGuncelle';
+  @Input() item: aliciModel['alicilar'] = { aliciID: null, address: null, aliciName: null, aliciTelNo: null };
+  @Input() deleteProcess: boolean = false;
+  aliciObj: aliciModel['alicilar'] = { aliciID: 0, address: '', aliciName: '', aliciTelNo: '' }; //Instance
+  aliciPostUrl = 'https://localhost:44350/api/Alicilar/AliciEkleGuncelle';
   singleAliciUrl = 'https://localhost:44350/api/Alicilar/SingleAlici/';
+  aliciDeleteUrl = 'https://localhost:44350/api/Alicilar/AliciSil/';
 
-  constructor(private modalService: NgbModal,private httpClient:HttpClient,private router:Router,private route:ActivatedRoute) {}
+
+  constructor(private modalService: NgbModal, private httpClient: HttpClient, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
     console.log(this.item)
+    console.log(this.deleteProcess);
   }
-  
-  onSubmit(data:aliciModel['alicilar']){
-    if(data.address !== '' && data.aliciName !== '' && data.aliciTelNo !== ''){
-      if(this.item.aliciID > 0){
-        this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl+'?id='+this.item.aliciID,data).subscribe((result) => {
-          console.warn('result',result);
+
+  onSubmit(data: aliciModel['alicilar']) {
+    if (data.address !== '' && data.aliciName !== '' && data.aliciTelNo !== '' && this.deleteProcess == false) {
+      if (this.item.aliciID > 0) {
+        this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl + '?id=' + this.item.aliciID, data).subscribe((result) => {
+          console.warn('result', result);
           this.modalService.dismissAll();
           this.newItemEvent.emit();
         })
-      }else{
-        this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl,data).subscribe((result) => {
-          console.warn('result',result);
+      } else if (data.address == '' && data.aliciName == '' && data.aliciTelNo == '' && this.deleteProcess == false) {
+        this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl, data).subscribe((result) => {
+          console.warn('result', result);
           this.modalService.dismissAll();
           this.newItemEvent.emit();
         })
       }
     }
-    
-    else{
-      alert('You did not correctly fill the form');
+
+    else {
+      if (this.deleteProcess = true) {
+        this.httpClient.delete<number>(this.aliciDeleteUrl + this.item.aliciID).subscribe(() => {
+          this.modalService.dismissAll();
+          this.newItemEvent.emit();
+        })
+      } else {
+        alert('You did not correctly fill the form');
+      }
     }
   }
 
   openXl(content) {
     this.modalService.open(content, { size: 'xl' });
-  
+
   }
 }
