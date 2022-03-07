@@ -63,6 +63,6 @@ export class ModalOptionsComponent implements OnInit {
   }
   openXl(content) {
     this.modalService.open(content, { size: 'xl' });
-
   }
+
 }

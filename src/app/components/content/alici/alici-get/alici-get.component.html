@@ -4,6 +4,9 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <app-modal-options (newItemEvent)="getAlicilar()"></app-modal-options>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Close button click')">Iptal</button>
+    </div>
 </ng-template>
 
 <div class="bg-white mt-4" style="border-radius: 0.2em;">
@@ -50,6 +53,11 @@
                                 (click)="modal.dismiss('Cross click')"></button>
                         </div>
                         <app-modal-options [item]="data" (newItemEvent)="getAlicilar()"></app-modal-options>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">Iptal</button>
+                        </div>
+                        
                     </ng-template>
                 </td>
                 <td>
