@@ -25,27 +25,20 @@ export class ModalOptionsComponent implements OnInit {
 
   constructor(private modalService: NgbModal, private httpClient: HttpClient, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
-    console.log(this.item)
-    console.log(this.deleteProcess);
+
   }
 
   onSubmit(data: aliciModel['alicilar']) {
-    if (data.address !== '' && data.aliciName !== '' && data.aliciTelNo !== '' && this.deleteProcess == false) {
+    console.log(this.item)
+    if (this.item.aliciID > 0 && this.item.address !== '' && this.item.aliciName !== '' && this.item.aliciTelNo !== '' && this.deleteProcess == false) {
       if (this.item.aliciID > 0) {
         this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl + '?id=' + this.item.aliciID, data).subscribe((result) => {
           console.warn('result', result);
           this.modalService.dismissAll();
           this.newItemEvent.emit();
         })
-      } else if (data.address == '' && data.aliciName == '' && data.aliciTelNo == '' && this.deleteProcess == false) {
-        this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl, data).subscribe((result) => {
-          console.warn('result', result);
-          this.modalService.dismissAll();
-          this.newItemEvent.emit();
-        })
       }
     }
-
     else {
       if (this.deleteProcess = true) {
         this.httpClient.delete<number>(this.aliciDeleteUrl + this.item.aliciID).subscribe(() => {
@@ -58,6 +51,16 @@ export class ModalOptionsComponent implements OnInit {
     }
   }
 
+  onPostSubmit(data:aliciModel['alicilar']){
+    console.log(this.item);
+    if(this.item.aliciID == null){
+      this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl,data).subscribe((result) => {
+        console.warn('result',result);
+        this.modalService.dismissAll();
+        this.newItemEvent.emit();
+      })
+    }
+  }
   openXl(content) {
     this.modalService.open(content, { size: 'xl' });
 
