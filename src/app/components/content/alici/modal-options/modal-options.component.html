@@ -4,14 +4,15 @@
         <div class="col-md-12">
             <div class="form-group mt-3" *ngIf="!deleteProcess">
                 <label for="aliciName" class="control-label">Alici Name</label>
-                <input [ngModel]="item.aliciName" maxlength="30" type="text" name="aliciName" class="form-control" required minlength="2" ngModel>
+                <input [ngModel]="item.aliciName" maxlength="30" type="text" name="aliciName" class="form-control"
+                    required minlength="2" ngModel>
             </div>
             <div class="form-group mt-3" *ngIf="!deleteProcess">
                 <label for="address" class="control-label">Address</label>
-                <input [ngModel]="item.address" maxlength="100" type="text" ngModel class="form-control"
-                    name="address" ngModel>
+                <input [ngModel]="item.address" maxlength="100" type="text" ngModel class="form-control" name="address"
+                    ngModel>
             </div>
-            <div class="form-group mt-3" *ngIf="!deleteProcess" >
+            <div class="form-group mt-3" *ngIf="!deleteProcess">
                 <label for="aliciTelNo" class="control-label">Alici Phone Number</label>
                 <input [ngModel]="item.aliciTelNo" maxlength="30" type="text" ngModel class="form-control"
                     name="aliciTelNo" ngModel>
@@ -19,13 +20,13 @@
 
             <!-- Delete Process -->
             <div class="form-group mt-3" *ngIf="deleteProcess">
-                <label class="form-control">{{item.aliciName}}</label>
+                <label class="form-control"><span class="bg-light">Alici Adi</span> : {{item.aliciName}}</label>
             </div>
             <div class="form-group mt-3" *ngIf="deleteProcess">
-                <label class="form-control">{{item.address}}</label>
+                <label class="form-control"><span class="bg-light">Alici Adresi</span> : {{item.address}}</label>
             </div>
             <div class="form-group mt-3" *ngIf="deleteProcess">
-                <label class="form-control">{{item.aliciTelNo}}</label>
+                <label class="form-control"><span class="bg-light">Alici Telefon Numarasi</span> : {{item.aliciTelNo}}</label>
             </div>
         </div>
     </div>
@@ -33,7 +34,7 @@
         <div class="form-group" *ngIf="!deleteProcess && item.aliciID">
             <input type="submit" name="Guncelleme" id="update" value="Guncelle" class="btn btn-success">
         </div>
-        
+
         <div class="form-group" *ngIf="deleteProcess">
             <input type="submit" value="Sil" class="btn btn-danger" />
         </div>
@@ -48,17 +49,16 @@
         <div class="col-md-12">
             <div class="form-group mt-3" *ngIf="!deleteProcess && !item.aliciID">
                 <label for="aliciName" class="control-label">Alici Name</label>
-                <input maxlength="30" type="text" name="aliciName" class="form-control" #minL="ngModel" required minlength="2" ngModel>
+                <input maxlength="30" type="text" name="aliciName" class="form-control" #minL="ngModel" required
+                    minlength="2" ngModel>
             </div>
             <div class="form-group mt-3" *ngIf="!deleteProcess">
                 <label for="address" class="control-label">Address</label>
-                <input maxlength="100" type="text" ngModel class="form-control"
-                    name="address" ngModel>
+                <input maxlength="100" type="text" ngModel class="form-control" name="address" ngModel>
             </div>
-            <div class="form-group mt-3" *ngIf="!deleteProcess" >
+            <div class="form-group mt-3" *ngIf="!deleteProcess">
                 <label for="aliciTelNo" class="control-label">Alici Phone Number</label>
-                <input maxlength="30" type="text" ngModel class="form-control"
-                    name="aliciTelNo" ngModel>
+                <input maxlength="30" type="text" ngModel class="form-control" name="aliciTelNo" ngModel>
             </div>
         </div>
     </div>
