@@ -21,6 +21,12 @@
         <li class="nav-item">
           <a routerLink="/alicilar"class="list-group-item list-group-item-action">Alici List</a>
         </li>
+        <li class="nav-item" *ngIf="!loginned">
+          <a routerLink="./rgr"class="list-group-item list-group-item-action">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="!loginned">
+          <a routerLink="./lgn"class="list-group-item list-group-item-action">Login</a>
+        </li>
       </ul>
     </div>
   </div>

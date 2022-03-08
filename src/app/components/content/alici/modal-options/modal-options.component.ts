@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEnca
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { of,Observable } from 'rxjs';
 import { aliciModel } from 'src/app/models/aliciModel';
 
 @Component({
@@ -17,6 +18,7 @@ export class ModalOptionsComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter<string>();
   @Input() item: aliciModel['alicilar'] = { aliciID: null, address: null, aliciName: null, aliciTelNo: null };
   @Input() deleteProcess: boolean = false;
+  emitter:Observable<string> = of(`Sam`,`Samet`,`Thomas`,`Ray`);
   aliciObj: aliciModel['alicilar'] = { aliciID: 0, address: '', aliciName: '', aliciTelNo: '' }; //Instance
   aliciPostUrl = 'https://localhost:44350/api/Alicilar/AliciEkleGuncelle';
   singleAliciUrl = 'https://localhost:44350/api/Alicilar/SingleAlici/';
@@ -51,11 +53,11 @@ export class ModalOptionsComponent implements OnInit {
     }
   }
 
-  onPostSubmit(data:aliciModel['alicilar']){
+  onPostSubmit(data: aliciModel['alicilar']) {
     console.log(this.item);
-    if(this.item.aliciID == null){
-      this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl,data).subscribe((result) => {
-        console.warn('result',result);
+    if (this.item.aliciID == null) {
+      this.httpClient.post<aliciModel['alicilar']>(this.aliciPostUrl, data).subscribe((result) => {
+        console.warn('result', result);
         this.modalService.dismissAll();
         this.newItemEvent.emit();
       })
@@ -65,4 +67,5 @@ export class ModalOptionsComponent implements OnInit {
     this.modalService.open(content, { size: 'xl' });
   }
 
+  
 }

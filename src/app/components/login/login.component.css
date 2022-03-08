@@ -1,0 +1,16 @@
+.form-border-top{
+    border-top-left-radius: 0.02em;
+    border-top-right-radius: 0.02em;
+}
+.form-border-bot{
+    border-bottom-left-radius: 0.02em;
+    border-bottom-right-radius: 0.02em;
+}
+.flexibility-e{
+    display: flex;
+    justify-content: flex-end;
+}
+.flexibility-c{
+    display: flex;
+    justify-content: center;
+}

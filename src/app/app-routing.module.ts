@@ -7,6 +7,7 @@ import { PostPostComponent } from './components/content/post/post-post/post-post
 import { PostComponent } from './components/content/post/post.component';
 import { TodoComponentComponent } from './components/content/todo-component/todo-component.component';
 import { UserComponent } from './components/content/user/user.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path:"todos",component:TodoComponentComponent},
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path:"posts/post-posts",component:PostPostComponent},
   {path:"alicilar",component:AliciGetComponent},
   {path:"aliciedit/:id",component:AliciEditComponent},
+  {path:"lgn",component:LoginComponent},
+  // {path:"rgr",component:RegisterComponent},
 
   {path:"**",component:ContentComponent},
 ];

@@ -1,0 +1,35 @@
+<form #userLogin="ngForm" class="" (ngSubmit)="onSubmit(userLogin.value)" >
+    <div class="row mt-5">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4 bg-light">
+            <div class="col-md-12 bg-light p-2 form-group flexibility-c">
+                <h1>
+                    Authorization
+                    <hr>
+                </h1>
+                
+            </div>
+            
+            <div class="col-md-12 p-2 form-group" >
+                <label class="control-label">Email or Username</label>
+                <input class="form-control" type="text" placeholder="...">
+            </div>
+            <div class="col-md-12 p-2 form-group">
+                <label class="control-label">Password</label>
+                <input class="form-control" type="text" placeholder="...">
+            </div>
+            <div class="col-md-12 p-2 flexibility-e">
+                <input class="btn btn-primary" type="submit" name="loginit" id="login" value="Login">
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+
+
+</form>

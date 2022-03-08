@@ -18,6 +18,8 @@ import { AliciEditComponent } from './components/content/alici/alici-edit/alici-
 import { ModalOptionsComponent } from './components/content/alici/modal-options/modal-options.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LoadingInterceptorService } from './services/loading-interceptor.service';
+import { LoginComponent } from './components/login/login.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { LoadingInterceptorService } from './services/loading-interceptor.servic
     AliciEditComponent,
     ModalOptionsComponent,
     LoadingComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { LoadingInterceptorService } from './services/loading-interceptor.servic
     NgbModule,
     RouterModule,
     FormsModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     {

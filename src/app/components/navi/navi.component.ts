@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navi',
@@ -12,4 +12,5 @@ export class NaviComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() loginned:boolean;
 }
